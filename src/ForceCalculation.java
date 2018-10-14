@@ -95,7 +95,7 @@ public class ForceCalculation {
                         + sRatingMap.get(otherUserId).get(0).size() + sRatingMap.get(otherUserId).get(1).size();
                 double jaccard = (double) commonCount / (base - commonCount);
                 UserPair pair = new UserPair(curUserId, otherUserId, jaccard);
-                if (topUserPair.size() < 100) {
+                if (topUserPair.size() < 200) {
                     topUserPair.add(pair);
                 } else {
                     if (jaccard > topUserPair.last().jaccard) {
@@ -127,7 +127,7 @@ public class ForceCalculation {
         int res = 0;
         int curIndex = 0, otherIndex = 0;
         while (curIndex < curList.size() && otherIndex < otherList.size()) {
-            if (curList.get(curIndex) == otherList.get(otherIndex)) {
+            if (curList.get(curIndex).equals(otherList.get(otherIndex))) {
                 res++;
                 curIndex++;
                 otherIndex++;
