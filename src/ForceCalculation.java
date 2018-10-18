@@ -22,7 +22,7 @@ public class ForceCalculation {
          */
         String line;
         boolean isFirstLine = true;
-        while ((line = br.readLine()) != null)   {
+        while ((line = br.readLine()) != null) {
             if (isFirstLine) {
                 isFirstLine = false;
                 continue;
@@ -71,7 +71,18 @@ public class ForceCalculation {
         TreeSet<UserPair> topUserPair = new TreeSet<>(new Comparator<UserPair>() {
             @Override
             public int compare(UserPair o1, UserPair o2) {
-                return o1.jaccard > o2.jaccard ? -1 :(o1.jaccard < o2.jaccard ? 1 : 0);
+                int res = judge(o1.jaccard, o2.jaccard);
+                if (res == 0) {
+                    res = judge(o1.curUserId, o2.curUserId);
+                    if (res == 0) {
+                        res = judge(o1.otherUserId, o2.otherUserId);
+                    }
+                }
+                return res;
+            }
+
+            public int judge(double first, double second) {
+                return first > second ? -1 : (first < second ? 1 : 0);
             }
         });
 
