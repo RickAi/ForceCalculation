@@ -112,7 +112,7 @@ public class ForceCalculation {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
         DecimalFormat df = new DecimalFormat("#.###");
         for (UserPair pair : topUserPair) {
-            String outputLine = "\"" + pair.curUserId + "\" \"" + pair.otherUserId + "\"\t" + df.format(pair.jaccard);
+            String outputLine = "\"" + pair.curUserId + "\"\t\"" + pair.otherUserId + "\"\t" + df.format(pair.jaccard);
             bw.write(outputLine);
             bw.newLine();
         }
